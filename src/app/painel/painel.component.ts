@@ -8,10 +8,30 @@ import { FRASES } from './frase-mock';
   styleUrls: ['./painel.component.css'],
 })
 export class PainelComponent implements OnInit {
-  public frases: Frase[] = FRASES;
   public instrucao: string = 'Traduza a expressão: ';
 
-  constructor() {}
+  public frases: Frase[] = FRASES;
+
+  public rodada: number = 0;
+
+  public resposta?: string;
+
+  public rodadaFrase: Frase;
+
+  constructor() {
+    this.rodadaFrase = this.frases[this.rodada];
+  }
 
   ngOnInit(): void {}
+
+  public atualizaResposta(event: Event): void {
+    this.resposta = (<HTMLInputElement>event.target).value.trim();
+  }
+
+  public verificaResposta(): void {
+    if (this.resposta !== this.rodadaFrase.frasePtBr.trim()) return;
+
+    ++this.rodada;
+    this.rodadaFrase = this.frases[this.rodada];
+  }
 }
