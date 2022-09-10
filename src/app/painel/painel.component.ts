@@ -16,10 +16,12 @@ export class PainelComponent implements OnInit {
 
   public resposta?: string;
 
-  public rodadaFrase: Frase;
+  public rodadaFrase?: Frase;
+
+  public progresso: number = 0;
 
   constructor() {
-    this.rodadaFrase = this.frases[this.rodada];
+    this.atualizaRodada();
   }
 
   ngOnInit(): void {}
@@ -29,9 +31,16 @@ export class PainelComponent implements OnInit {
   }
 
   public verificaResposta(): void {
-    if (this.resposta !== this.rodadaFrase.frasePtBr.trim()) return;
+    if (this.resposta !== this.rodadaFrase!.frasePtBr.trim()) return;
 
-    ++this.rodada;
+    this.rodada++;
+    this.progresso += 100 / this.frases.length;
+
+    this.atualizaRodada();
+  }
+
+  public atualizaRodada(): void {
     this.rodadaFrase = this.frases[this.rodada];
+    this.resposta = '';
   }
 }

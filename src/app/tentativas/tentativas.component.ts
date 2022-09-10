@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Coracao } from '../shared/coracao.model';
+
 @Component({
   selector: 'app-tentativas',
   templateUrl: './tentativas.component.html',
   styleUrls: ['./tentativas.component.css'],
 })
 export class TentativasComponent implements OnInit {
-  public coracaoVazio: string = '/assets/img/coracao_vazio.png';
-  public coracaoCheio: string = '/assets/img/coracao_cheio.png';
+  public coracoes: Coracao[] = Array(3).fill(new Coracao(true));
 
   constructor() {}
 
