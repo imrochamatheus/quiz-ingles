@@ -1,2 +1,12 @@
 <app-topo></app-topo>
-<app-painel></app-painel>
+
+<div *ngIf="partidaEmAndamento; else feedback">
+  <app-painel (finalizaPartida)="finalizaPartida($event)"></app-painel>
+</div>
+
+<ng-template #feedback>
+  <div class="text-center mt-4">
+    <h1>{{ mensagem }}</h1>
+    <button (click)="reiniciarJogo()">Jogar novamente</button>
+  </div>
+</ng-template>
