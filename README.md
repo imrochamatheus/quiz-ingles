@@ -1,4 +1,3 @@
 # English Quiz
 
-
-Projeto para estudos, desenvolvido durante o curso de desenvolvimento web com Angular e Typescript, ministrado pelo instrutor Jorge Sant'ana
+Project for studies, developed during the web development course with Angular and Typescript, taught by instructor Jorge Sant'ana
